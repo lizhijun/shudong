@@ -1,7 +1,7 @@
 import MySQLdb
 
 try:
-    conn=MySQLdb.connect(host="localhost",user="root",passwd="717df5eb",db="iyourl",port=3306,charset="utf8",unix_socket="/tmp/mysql.sock")
+    conn=MySQLdb.connect(host="localhost",user="root",passwd="toor",db="iyourl",port=3306,charset="utf8",unix_socket="/tmp/mysql.sock")
     cur=conn.cursor()
     #count=cur.execute('select * from tags')
     #print count
