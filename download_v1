@@ -1,0 +1,47 @@
+#-*- Encoding: utf-8 -*-
+import urllib
+
+hole = {'dida' : ['http://page.renren.com/601694006', '<span class=\"status-detail\">', '</span>'], #地质大学
+        'wuda' : ['http://page.renren.com/601388182', '武大树洞</a>&nbsp;:&nbsp;', '</h3>'],#武汉大学
+        'sjtu' : ['http://page.renren.com/601680471', 'SJTU树洞</a>&nbsp;:&nbsp;', '</h3>'],#上海交大
+        'nsd'  : ['http://page.renren.com/601696653', '南师大树洞</a>&nbsp;:&nbsp;', '</h3>']} #南师大
+'''
+hole = {'dida' : 'http://page.renren.com/601694006',
+        'wuda' : 'http://page.renren.com/601388182',
+        'sjtu' : 'http://page.renren.com/601680471',
+        'nsd' : 'http://page.renren.com/601696653'}
+'''
+#wuda,sjtu,nsd的网站布局差不多
+#地大的网站布局为第一类
+def crawl_kind_a(url, feature_str_start, feature_str_end):
+    f = urllib.urlopen(url)
+    file_str = f.read()
+    for i in range(1, 10):
+        start_pos = file_str.find(feature_str_start)
+        file_str = file_str[start_pos :]
+        end_pos = file_str.find(feature_str_end)
+        len_feature_str_start = len(feature_str_start)
+        print str(i) + '.', file_str[len_feature_str_start : end_pos]
+        file_str = file_str[end_pos :]
+
+#武大上交南师是一样的布局
+def crawl_kind_b(url, feature_str_start, feature_str_end):
+    f = urllib.urlopen(url)
+    file_str = f.read()
+    for i in range(1, 10):
+        start_pos = file_str.find(feature_str_start)
+        file_str = file_str[start_pos :]
+        end_pos = file_str.find(feature_str_end)
+        len_feature_str_start = len(feature_str_start)
+        print str(i) + '.', file_str[len_feature_str_start : end_pos]
+        file_str = file_str[end_pos :]
+
+if __name__ == '__main__':
+    print '************中国地质大学的树洞************'
+    crawl_kind_a(hole['dida'][0], hole['dida'][1], hole['dida'][2])
+    print '************上海交通大学的树洞************'
+    crawl_kind_b(hole['sjtu'][0], hole['sjtu'][1], hole['sjtu'][2])
+    print '************武汉大学的树洞************'
+    crawl_kind_b(hole['wuda'][0], hole['wuda'][1], hole['wuda'][2])
+    print '************南京师范大学的树洞************'
+    crawl_kind_b(hole['nsd'][0], hole['nsd'][1], hole['nsd'][2])
