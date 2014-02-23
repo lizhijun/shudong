@@ -27,7 +27,7 @@ for i in range(1, 10):
 import MySQLdb
 
 try:
-    conn=MySQLdb.connect(host="localhost",user="root",passwd="717df5eb",port=3306,charset="utf8",unix_socket="/tmp/mysql.sock")
+    conn=MySQLdb.connect(host="localhost",user="root",passwd="toor",port=3306,charset="utf8",unix_socket="/tmp/mysql.sock")
     cur=conn.cursor()
     #count=cur.execute('select * from tags')
     #print count
